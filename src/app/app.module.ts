@@ -7,7 +7,6 @@ import { CleanerPage } from '../pages/cleaner/cleaner';
 import { AdminPage } from '../pages/admin/admin';
 import { RegisteredPage } from '../pages/registered/registered';
 import { LoginPage } from '../pages/login/login';
-import { RegisterPage } from '../pages/register/register';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -22,8 +21,7 @@ import { AuthService } from "../providers/authservice-provider";
     CleanerPage,
     AdminPage,
     RegisteredPage,
-    LoginPage,
-    RegisterPage
+    LoginPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -35,8 +33,7 @@ import { AuthService } from "../providers/authservice-provider";
     CleanerPage,
     AdminPage,
     RegisteredPage,
-    LoginPage,
-    RegisterPage
+    LoginPage
   ],
   providers: [
     StatusBar,

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { AuthService } from '../../providers/authservice-provider';
-import { RegisterPage } from '../register/register';
 import { AdminPage } from '../admin/admin';
  
 @Component({
