@@ -7,32 +7,37 @@
 </ion-header>
 
 <ion-content padding>
+  <h1>
+    Registration
+  </h1>
+  
   <p>
-  Welcome!
-  </p> <p>
-  Please fill in your details to register:
+    Please fill in your details to register:
   </p>
   
-  <ion-list>
+  <form (ngSubmit)="workerConfirm()" #registerForm="ngForm">
     <ion-item>
       <ion-label floating>Name</ion-label>
-      <ion-input type="text" [(ngModel)]="nameField" ></ion-input>
+      <ion-input type="text" name="name" [(ngModel)]="nameField" ></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Surname</ion-label><ion-input type="text" [(ngModel)]="surnameField" placeholder="Surname"></ion-input>
+      <ion-label floating>Surname</ion-label>
+      <ion-input type="text" name="surname" [(ngModel)]="surnameField"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Address</ion-label><ion-input type="text" [(ngModel)]="addressField" placeholder="Address"></ion-input>
+      <ion-label floating>Address</ion-label><ion-input type="text" name="address" [(ngModel)]="addressField"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Mobile Phone</ion-label><ion-input type="tel" [(ngModel)]="phoneField" placeholder="Mobile Phone"></ion-input>
+      <ion-label floating>Mobile Phone</ion-label><ion-input type="tel" name="phone" [(ngModel)]="phoneField"></ion-input>
     </ion-item>
+  </form>
 
-  </ion-list>
+  <div text-center>
+    <button ion-button round (click) = "workerConfirm()"
+    type = "submit"> Register </button>
+  </div>
 
-  <button ion-button round (click)="workerConfirm($items)"> Register </button>
-
- </ion-content>
+  </ion-content>

@@ -38,7 +38,9 @@ import { AuthService } from "../providers/authservice-provider";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}, CouchbaseProvider, AuthService
+    {provide: ErrorHandler, useClass: IonicErrorHandler}, 
+    CouchbaseProvider, 
+    AuthService
   ]
 })
 export class AppModule {}
