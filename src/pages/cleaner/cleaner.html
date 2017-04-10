@@ -7,32 +7,71 @@
 </ion-header>
 
 <ion-content padding>
+  <h1>
+    Registration
+  </h1>
+
   <p>
-  Welcome!
-  </p> <p>
-  Please fill in your details to register:
+    Please fill in your details to register:
   </p>
-  
+
   <ion-list>
-    <ion-item>
-      <ion-label floating>Name</ion-label>
-      <ion-input type="text" [(ngModel)]="nameField" ></ion-input>
-    </ion-item>
+    <form [formGroup]="newCleaner" (ngSubmit)="onSubmit()">
 
-    <ion-item>
-      <ion-label floating>Surname</ion-label><ion-input type="text" [(ngModel)]="surnameField" placeholder="Surname"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>First Name</ion-label>
+        <ion-input [(ngModel)]="userInfo.firstName" formControlName="firstName" type="text" id="firstName" spellcheck="false" autocapitalize="off">
+        </ion-input>
+      </ion-item>
+      <p *ngIf="!isValid('firstName')" danger padding-left>The First Name can only contain Letters A-Z</p>
 
-    <ion-item>
-      <ion-label floating>Address</ion-label><ion-input type="text" [(ngModel)]="addressField" placeholder="Address"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Last name</ion-label>
+        <ion-input [(ngModel)]="userInfo.lastName" formControlName="lastName" type="text" id="lastName" spellcheck="false" autocapitalize="off"></ion-input>
+      </ion-item>
+      <p *ngIf="!isValid('lastName')" danger padding-left>The Last Name can only contain Letters A-Z</p>
 
-    <ion-item>
-      <ion-label floating>Mobile Phone</ion-label><ion-input type="tel" [(ngModel)]="phoneField" placeholder="Mobile Phone"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Mobile Phone</ion-label>
+        <ion-input [(ngModel)]="userInfo.phone" type="text" formControlName="phone" id="phone" spellcheck="false" autocapitalize="off"></ion-input>
+      </ion-item>
+      <p *ngIf="!isValid('phone')" danger padding-left>The Phone Number can only contain 10 Digits</p>
 
+      <p>
+        Address:
+      </p>
+      <ion-item>
+        <ion-label floating>Street Number</ion-label>
+        <ion-input [(ngModel)]="userInfo.number" type="text" formControlName="number" id="number" spellcheck="false" autocapitalize="off"></ion-input>
+      </ion-item>
+      <p *ngIf="!isValid('number')" class=
+      "alert alert-danger" padding-left>The Street Number can only contain Letters A-Z, Digits 0-9 and '-/</p>
+
+      <ion-item>
+        <ion-label floating>Street</ion-label>
+        <ion-input [(ngModel)]="userInfo.street" type="text" formControlName="street" id="street" spellcheck="false" autocapitalize="off"></ion-input>
+      </ion-item>
+      <p *ngIf="!isValid('street')" danger padding-left>The Street Name can only contain Letters A-Z</p>
+
+      <ion-item>
+        <ion-label floating>Postcode</ion-label>
+        <ion-input [(ngModel)]="userInfo.postcode" type="text" formControlName="postcode" id="postcode" spellcheck="false" autocapitalize="off"></ion-input>
+      </ion-item>
+      <p *ngIf="!isValid('postcode')" danger padding-left>The Postcode can only contain Letters A-Z, Digits 0-9 and -/</p>
+
+      <ion-item>
+        <ion-label floating>City</ion-label>
+        <ion-input [(ngModel)]="userInfo.city" type="text" formControlName="city" id="city" spellcheck="false" autocapitalize="off"></ion-input>
+      </ion-item>
+      <p *ngIf="!isValid('city')" danger padding-left>The City can only contain Letters A-Z and '</p>
+
+
+
+      <div text-center>
+        <button ion-button round type="submit" [disabled]="!newCleaner.valid"> Register
+        </button>
+      </div>
+
+    </form>
   </ion-list>
-
-  <button ion-button round (click)="workerConfirm($items)"> Register </button>
-
- </ion-content>
+</ion-content>

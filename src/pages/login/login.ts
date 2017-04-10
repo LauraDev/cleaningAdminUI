@@ -2,19 +2,20 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { AuthService } from '../../providers/authservice-provider';
 import { AdminPage } from '../admin/admin';
- 
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
 export class LoginPage {
   loading: Loading;
-  registerCredentials = {email: '', password: ''};
- 
+  // registerCredentials = {email: '', password: ''};
+  registerCredentials = {email: 'Email', password: 'Password'};
+
   constructor(public navCtrl: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {}
- 
+
    public login() {
-    this.showLoading()
+    this.showLoading();
     this.auth.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {
         setTimeout(() => {
@@ -29,19 +30,19 @@ export class LoginPage {
       this.showError(error);
     });
   }
- 
+
   showLoading() {
     this.loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
     this.loading.present();
   }
- 
+
   showError(text) {
     setTimeout(() => {
       this.loading.dismiss();
     });
- 
+
     let alert = this.alertCtrl.create({
       title: 'Fail',
       subTitle: text,

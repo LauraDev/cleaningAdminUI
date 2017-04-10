@@ -11,7 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { CouchbaseProvider } from "../providers/couchbase-provider";
+import { BackendWs } from "../providers/backend-ws";
 import { AuthService } from "../providers/authservice-provider";
 
 @NgModule({
@@ -38,7 +38,9 @@ import { AuthService } from "../providers/authservice-provider";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}, CouchbaseProvider, AuthService
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BackendWs,
+    AuthService
   ]
 })
 export class AppModule {}
