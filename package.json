@@ -23,6 +23,7 @@
     "@ionic-native/splash-screen": "3.1.0",
     "@ionic-native/status-bar": "3.1.0",
     "@ionic/storage": "2.0.0",
+    "angular2-uuid": "^1.1.1",
     "body-parser": "^1.17.1",
     "cordova-couchbase": "^1.0.0",
     "couchbase": "^2.3.2",
