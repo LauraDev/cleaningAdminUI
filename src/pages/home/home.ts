@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { CleanerPage } from '../cleaner/cleaner';
+import { RegistrationPage } from '../registration/registration';
 import { LoginPage } from '../login/login';
 @Component({
   selector: 'page-home',
@@ -11,7 +11,7 @@ export class HomePage {
   constructor(public navCtrl: NavController) {}
 
  goToOtherPage() {
-    this.navCtrl.push(CleanerPage);
+    this.navCtrl.push(RegistrationPage);
   }
 
   goToOtherPage2() {

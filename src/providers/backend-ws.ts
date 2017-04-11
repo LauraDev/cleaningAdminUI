@@ -2,18 +2,13 @@ import { Injectable } from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 
-/*
-  Generated class for the BackendWs provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class BackendWs {
   backendWsUrl= 'http://localhost:3000/cleaners';
 
   constructor(public http: Http) {
-    // console.log('Hello BackendWs Provider');
+    
   }
 
   public write(value: string): Promise<string>{

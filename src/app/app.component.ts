@@ -2,8 +2,11 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
 import {AuthService} from "../providers/authservice-provider";
 import {BackendWs} from "../providers/backend-ws";
+import {DTO} from "../providers/dto";
+import {Util} from "../providers/util";
 
 import { HomePage } from '../pages/home/home';
 
