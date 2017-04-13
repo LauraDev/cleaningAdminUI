@@ -20,26 +20,26 @@
 
       <ion-item>
         <ion-label floating>First Name</ion-label>
-        <ion-input [(ngModel)]="userInfo.firstName" formControlName="firstName" type="text" id="firstName" spellcheck="false" autocapitalize="off">
+        <ion-input [(ngModel)]="classCleaner.infos.firstName" formControlName="firstName" type="text" id="firstName" spellcheck="false" autocapitalize="off">
         </ion-input>
       </ion-item>
       <p *ngIf="!isValid('firstName')" danger padding-left>The First Name can only contain Letters A-Z</p>
 
       <ion-item>
         <ion-label floating>Last name</ion-label>
-        <ion-input [(ngModel)]="userInfo.lastName" formControlName="lastName" type="text" id="lastName" spellcheck="false" autocapitalize="off"></ion-input>
+        <ion-input [(ngModel)]="classCleaner.infos.lastName" formControlName="lastName" type="text" id="lastName" spellcheck="false" autocapitalize="off"></ion-input>
       </ion-item>
       <p *ngIf="!isValid('lastName')" danger padding-left>The Last Name can only contain Letters A-Z</p>
 
       <ion-item>
         <ion-label floating>Mobile Phone</ion-label>
-        <ion-input [(ngModel)]="userInfo.phone" type="text" formControlName="phone" id="phone" spellcheck="false" autocapitalize="off"></ion-input>
+        <ion-input [(ngModel)]="classCleaner.infos.phone" type="text" formControlName="phone" id="phone" spellcheck="false" autocapitalize="off"></ion-input>
       </ion-item>
       <p *ngIf="!isValid('phone')" danger padding-left>The Phone Number can only contain 10 Digits</p>
 
       <ion-item>
         <ion-label floating>E-mail</ion-label>
-        <ion-input [(ngModel)]="userInfo.email" formControlName="email" type="text" id="email" spellcheck="false" autocapitalize="off"></ion-input>
+        <ion-input [(ngModel)]="classCleaner.infos.email" formControlName="email" type="text" id="email" spellcheck="false" autocapitalize="off"></ion-input>
       </ion-item>
       <p *ngIf="!isValid('email')" danger padding-left>Invalid E-mail</p>
 
@@ -48,26 +48,26 @@
       </p>
       <ion-item>
         <ion-label floating>Street Number</ion-label>
-        <ion-input [(ngModel)]="userInfo.number" type="text" formControlName="number" id="number" spellcheck="false" autocapitalize="off"></ion-input>
+        <ion-input [(ngModel)]="classCleaner.address.number" type="text" formControlName="number" id="number" spellcheck="false" autocapitalize="off"></ion-input>
       </ion-item>
       <p *ngIf="!isValid('number')" class=
       "alert alert-danger" padding-left>The Street Number can only contain Letters A-Z, Digits 0-9 and '-/</p>
 
       <ion-item>
         <ion-label floating>Street</ion-label>
-        <ion-input [(ngModel)]="userInfo.street" type="text" formControlName="street" id="street" spellcheck="false" autocapitalize="off"></ion-input>
+        <ion-input [(ngModel)]="classCleaner.address.street" type="text" formControlName="street" id="street" spellcheck="false" autocapitalize="off"></ion-input>
       </ion-item>
       <p *ngIf="!isValid('street')" danger padding-left>The Street Name can only contain Letters A-Z</p>
 
       <ion-item>
         <ion-label floating>Postcode</ion-label>
-        <ion-input [(ngModel)]="userInfo.postcode" type="text" formControlName="postcode" id="postcode" spellcheck="false" autocapitalize="off"></ion-input>
+        <ion-input [(ngModel)]="classCleaner.address.postcode" type="text" formControlName="postcode" id="postcode" spellcheck="false" autocapitalize="off"></ion-input>
       </ion-item>
       <p *ngIf="!isValid('postcode')" danger padding-left>The Postcode can only contain Letters A-Z, Digits 0-9 and -/</p>
 
       <ion-item>
         <ion-label floating>City</ion-label>
-        <ion-input [(ngModel)]="userInfo.city" type="text" formControlName="city" id="city" spellcheck="false" autocapitalize="off"></ion-input>
+        <ion-input [(ngModel)]="classCleaner.address.city" type="text" formControlName="city" id="city" spellcheck="false" autocapitalize="off"></ion-input>
       </ion-item>
       <p *ngIf="!isValid('city')" danger padding-left>The City can only contain Letters A-Z and '</p>
       
@@ -76,7 +76,7 @@
       </p>
       <ion-item>
         <ion-label floating>Distance</ion-label>
-        <ion-input [(ngModel)]="userInfo.distance" type="text" formControlName="distance" id="distance" spellcheck="false" autocapitalize="off"></ion-input>
+        <ion-input [(ngModel)]="classCleaner.infos.distance" type="text" formControlName="distance" id="distance" spellcheck="false" autocapitalize="off"></ion-input>
       </ion-item>
       <p *ngIf="!isValid('distance')" danger padding-left>Invalid Distance'</p>
 

@@ -7,7 +7,32 @@
 </ion-header>
 
 <ion-content padding>
-  Cleaners List
-  <p>
-  </p>
-</ion-content>
+  <h3>
+    Cleaners List
+  </h3>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>First Name</ion-col>
+      <ion-col>Last Name</ion-col>
+      <ion-col>Mobile</ion-col>
+      <ion-col>Status</ion-col>
+      <ion-col>Modify</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngFor="let allCleaner of allCleaners ">
+    <ion-row>
+      <ion-col>{{ allCleaner.firstName | json }}</ion-col>
+      <ion-col>{{ allCleaner.lastName | json }}</ion-col>
+      <ion-col>{{ allCleaner.phone | json }}</ion-col>
+      <ion-col>{{ allCleaner.status | json }}</ion-col>
+      <ion-col>
+        <button ion-button (click)="goToOtherPage3()">
+        X</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+<button ion-button (click)="goToOtherPage3()">
+        X</button>
+</ion-content>  

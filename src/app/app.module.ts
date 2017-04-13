@@ -7,14 +7,17 @@ import { RegistrationPage } from '../pages/registration/registration';
 import { AdminPage } from '../pages/admin/admin';
 import { RegisteredPage } from '../pages/registration-submitted/registered';
 import { LoginPage } from '../pages/login/login';
+import { ModifInfosPage } from '../pages/modifInfos/modifInfos';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AuthService } from "../providers/authservice-provider";
 import { BackendWs } from "../providers/backend-ws";
-import { DTO } from "../providers/dto";
-import { Util } from "../providers/util";
+import {Geocoding} from "../providers/geocoding";
+
+import { ClassCleaner } from "../dto/classCleaner";
+import { FormValidation } from "../util/formValidation";
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { Util } from "../providers/util";
     RegistrationPage,
     AdminPage,
     RegisteredPage,
-    LoginPage
+    LoginPage,
+    ModifInfosPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -35,7 +39,8 @@ import { Util } from "../providers/util";
     RegistrationPage,
     AdminPage,
     RegisteredPage,
-    LoginPage
+    LoginPage,
+    ModifInfosPage
   ],
   providers: [
     StatusBar,
@@ -43,8 +48,12 @@ import { Util } from "../providers/util";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
     BackendWs,
-    DTO,
-    Util
-  ]
+    Geocoding,
+    FormValidation,
+    ClassCleaner
+  ],
+  
+
+
 })
 export class AppModule {}

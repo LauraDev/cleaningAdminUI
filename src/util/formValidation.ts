@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 
 
 @Injectable()
-export class Util { 
+export class FormValidation { 
 
 newCleaner: any;
 public constructor(public formBuilder: FormBuilder)

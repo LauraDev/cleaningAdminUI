@@ -3,8 +3,9 @@ import {NavController, AlertController} from 'ionic-angular';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 import {BackendWs} from "../../providers/backend-ws";
-import {DTO} from "../../providers/dto";
-import {Util} from "../../providers/util";
+import {ClassCleaner} from "../../dto/classCleaner";
+import {FormValidation} from "../../util/formValidation";
+//import {Geocoding} from "../../providers/geocoding";
 
 import {RegisteredPage} from '../registration-submitted/registered';
 
@@ -15,36 +16,20 @@ import {RegisteredPage} from '../registration-submitted/registered';
 export class RegistrationPage implements OnInit{
 
 public Cleaners: FormGroup;
-  // DELETE USERINFO AND KEEP THE FOLLOWING LINE WHEN READY
-  //userInfo: DTO[] = [];
 
-userInfo: {firstName: string, lastName: string, phone: string, email: string, number: string, street: string, postcode: string, city: string, uuid: string, status: number, latitude: string, longitude: string, distance: number } = {
-    firstName: 'Lucas',
-    lastName: 'Traore',
-    phone: '6132408882',
-    email: 'asd@mail.com',
-    number: '213',
-    street: 'Laso',
-    postcode: 'weq',
-    city: 'ewq',
-    uuid: 'UUID.UUID()',
-    status: 0,
-    latitude: '',
-    longitude: '',
-    distance: 5
-  };
-  
-  public constructor(public navCtrl: NavController,
+public constructor(public navCtrl: NavController,
                      public alertCtrl: AlertController,
                      private backendWs: BackendWs,
                      public zone: NgZone,
                      public formBuilder: FormBuilder,
-                     public util: Util)
+                     public classCleaner: ClassCleaner,
+                   //public geocoding: Geocoding)
+                     public formValidation: FormValidation)
                      {
   }
   
   ngOnInit(): any {
-   this.Cleaners = this.util.newCleaner;
+   this.Cleaners = this.formValidation.newCleaner;
   } 
 
  isValid(field: string) {
@@ -52,13 +37,11 @@ userInfo: {firstName: string, lastName: string, phone: string, email: string, nu
     return formField.valid || formField.pristine;
   }
   
-  
-  onSubmit() {
-    //TODO: remove this when we're done   dans .Html-> TODO: remove this: {{model.name}}
-    let alert = this.alertCtrl.create({
-      title: 'Confirm Registration',
-      message: 'Do you want to submit your details?',
-      buttons: [
+ onSubmit() {
+   let alert = this.alertCtrl.create({
+     title: 'Confirm Registration',
+     message: 'Do you want to submit your details?',
+     buttons: [
         {
           text: 'Cancel',
           role: 'cancel',
@@ -69,9 +52,17 @@ userInfo: {firstName: string, lastName: string, phone: string, email: string, nu
         {
           text: 'Confirm',
           handler: () => {
-            console.log(this.userInfo);
+            
+      // 1- Send 'address' to get geocode
+         // this.geocoding.sendAddress(JSON.stringify(this.dto.address)+CA&key=YOUR_API_KEY).then(
+           //    data => {
+           //     console.log(data);
 
-            this.backendWs.write(JSON.stringify(this.userInfo)).then(
+           // 2- Get info from google map and send it to dto.allInfos
+           //  this.geocoding.getGeocode(JSON.parse() => any) = this.dto.infos.(latitude , longitude)
+                 
+           // 3- Send all data to database
+     this.backendWs.write(JSON.stringify(this.classCleaner.allInfos)).then(
               data => {
                 console.log(data);
                 this.navCtrl.push(RegisteredPage);

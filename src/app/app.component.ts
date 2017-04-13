@@ -5,10 +5,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {AuthService} from "../providers/authservice-provider";
 import {BackendWs} from "../providers/backend-ws";
-import {DTO} from "../providers/dto";
-import {Util} from "../providers/util";
+import {Geocoding} from "../providers/geocoding";
 
 import { HomePage } from '../pages/home/home';
+
+import {ClassCleaner} from "../dto/classCleaner";
+import {FormValidation} from "../util/formValidation";
 
 
 @Component({
@@ -17,7 +19,14 @@ import { HomePage } from '../pages/home/home';
 export class MyApp {
   rootPage:any = HomePage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, authService: AuthService, backendWs: BackendWs) {
+  constructor(platform: Platform, 
+              statusBar: StatusBar, 
+              splashScreen: SplashScreen, 
+              authService: AuthService,
+              geocoding: Geocoding, 
+              formValidation: FormValidation,
+              classCleaner: ClassCleaner,
+              backendWs: BackendWs) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
