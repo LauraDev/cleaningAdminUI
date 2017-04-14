@@ -1,22 +1,23 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-/*
-  Generated class for the ModifPage page.
+import { ClassCleaner } from "../../providers/dto/classCleaner";
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-modifInfos',
   templateUrl: 'modifInfos.html'
 })
 export class ModifInfosPage {
+  
+  cleaner2modify = this.navParams;
+  
+  constructor(public navCtrl: NavController,
+              public classCleaner: ClassCleaner,
+              public navParams: NavParams,) {
+  
+  //this.cleaner2modify = classCleaner.allInfos;
+  //this.cleaner2modify = this.navParams;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ModifPagePage');
-  }
-
+    console.log(this.cleaner2modify); 
+              }    
 }

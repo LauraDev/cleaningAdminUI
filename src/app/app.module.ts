@@ -12,12 +12,12 @@ import { ModifInfosPage } from '../pages/modifInfos/modifInfos';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { AuthService } from "../providers/authservice-provider";
-import { BackendWs } from "../providers/backend-ws";
-import {Geocoding} from "../providers/geocoding";
-
-import { ClassCleaner } from "../dto/classCleaner";
-import { FormValidation } from "../util/formValidation";
+import { AuthService } from "../providers/factory/authservice";
+import { BackendWs } from "../providers/factory/backend-ws";
+import { Geocoding } from "../providers/factory/geocoding";
+import { AlertRegistration } from '../providers/factory/alertRegistration'
+import { ClassCleaner } from "../providers/dto/classCleaner";
+import { FormValidation } from "../providers/util/formValidation";
 
 @NgModule({
   declarations: [
@@ -50,7 +50,8 @@ import { FormValidation } from "../util/formValidation";
     BackendWs,
     Geocoding,
     FormValidation,
-    ClassCleaner
+    ClassCleaner,
+    AlertRegistration
   ],
   
 

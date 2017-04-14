@@ -28,11 +28,11 @@
       <ion-col>{{ allCleaner.phone | json }}</ion-col>
       <ion-col>{{ allCleaner.status | json }}</ion-col>
       <ion-col>
-        <button ion-button (click)="goToOtherPage3()">
-        X</button>
+        <button ion-button (click)="toogle()"
+          id="{{ allCleaner.uuid }}">X
+        </button>
       </ion-col>
     </ion-row>
   </ion-grid>
-<button ion-button (click)="goToOtherPage3()">
-        X</button>
+
 </ion-content>  

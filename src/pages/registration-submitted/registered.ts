@@ -11,7 +11,7 @@ export class RegisteredPage {
   constructor(public navCtrl: NavController) {
   }
 
-goToOtherPage2() {
+  goToOtherPage2() {
     this.navCtrl.push(LoginPage);
   }
 }
