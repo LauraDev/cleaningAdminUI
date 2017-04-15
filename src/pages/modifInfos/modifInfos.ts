@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { OnInit, Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { FormGroup } from '@angular/forms';
 
-import { ClassCleaner } from "../../providers/dto/classCleaner";
+import { AlertModify } from "../../providers/factory/alertModify";
+import { ClassModify } from "../../providers/dto/classModify";
+import { ModifyValidation } from "../../providers/util/modifyValidation";
 
 @Component({
   selector: 'page-modifInfos',
@@ -9,15 +12,34 @@ import { ClassCleaner } from "../../providers/dto/classCleaner";
 })
 export class ModifInfosPage {
   
-  cleaner2modify = this.navParams;
-  
+  public cleaner2modify = this.navParams;
+  public Cleaners: FormGroup;
+
+
   constructor(public navCtrl: NavController,
-              public classCleaner: ClassCleaner,
+              public alertModify: AlertModify,
+              public classModify: ClassModify,
+              public modifyValidation: ModifyValidation,
               public navParams: NavParams,) {
   
-  //this.cleaner2modify = classCleaner.allInfos;
-  //this.cleaner2modify = this.navParams;
+   // this.cleaner2modify = this.navParams;
+   // console.log(this.classCleaner.data); 
 
-    console.log(this.cleaner2modify); 
-              }    
-}
+                  }  
+
+  
+
+  ngOnInit(): any {
+   this.Cleaners = this.modifyValidation.newCleaner;
+  } 
+
+  isValid(field: string) {
+    let formField = this.Cleaners.get(field);
+    return formField.valid || formField.pristine;
+  }
+  
+  onSubmit() {
+    this.alertModify.theAlert() ;
+  }
+
+  }

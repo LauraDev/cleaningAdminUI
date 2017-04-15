@@ -3,7 +3,7 @@ import {UUID} from 'angular2-uuid';
 
 @Injectable()
 
-export class ClassCleaner {
+export class ClassModify {
     
   infos: { uuid: string,
            firstName: string, 
@@ -13,26 +13,26 @@ export class ClassCleaner {
            latitude: string, 
            longitude: string, 
            distance: string,
-           status: number, } = {
-    uuid: UUID.UUID(),
-    firstName: 'Luc',
-    lastName: 'T',
-    phone: '6000000000',
-    email: 'rf@mail.fr',
+           status: string, } = {
+    uuid: '',
+    firstName: '',
+    lastName: '',
+    phone: '',
+    email: '',
     latitude: '',
     longitude: '',
-    distance: '5',
-    status: 0,
+    distance: '',
+    status: '',
    };
 
    address: { number: string, 
              street: string, 
              postcode: string, 
              city: string } = {
-     number: '1',
-     street: 'main street',
-     postcode: 'f1',
-     city: 'ottawa',
+     number: '',
+     street: '',
+     postcode: '',
+     city: '',
   }
   
 allInfos = Object.assign (this.infos, this.address)

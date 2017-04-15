@@ -1,23 +1,28 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-
-import { RegistrationPage } from '../pages/registration/registration';
-import { AdminPage } from '../pages/admin/admin';
-import { RegisteredPage } from '../pages/registration-submitted/registered';
-import { LoginPage } from '../pages/login/login';
-import { ModifInfosPage } from '../pages/modifInfos/modifInfos';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+import { HomePage } from '../pages/home/home';
+
+import { AdminPage } from '../pages/admin/admin';
+import { LoginPage } from '../pages/login/login';
+import { ModifInfosPage } from '../pages/modifInfos/modifInfos';
+import { RegistrationPage } from '../pages/registration/registration';
+import { RegisteredPage } from '../pages/registration-submitted/registered';
+
+import { ClassCleaner } from "../providers/dto/classCleaner";
+import { ClassModify } from "../providers/dto/classModify";
+
+import { FormValidation } from "../providers/util/formValidation";
+import { ModifyValidation } from "../providers/util/modifyValidation";
 
 import { AuthService } from "../providers/factory/authservice";
 import { BackendWs } from "../providers/factory/backend-ws";
 import { Geocoding } from "../providers/factory/geocoding";
 import { AlertRegistration } from '../providers/factory/alertRegistration'
-import { ClassCleaner } from "../providers/dto/classCleaner";
-import { FormValidation } from "../providers/util/formValidation";
+import { AlertModify } from '../providers/factory/alertModify'
 
 @NgModule({
   declarations: [
@@ -50,8 +55,11 @@ import { FormValidation } from "../providers/util/formValidation";
     BackendWs,
     Geocoding,
     FormValidation,
+    ModifyValidation,
     ClassCleaner,
-    AlertRegistration
+    ClassModify,
+    AlertRegistration,
+    AlertModify
   ],
   
 
