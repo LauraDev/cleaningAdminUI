@@ -10,27 +10,21 @@ import { ModifyValidation } from "../../providers/util/modifyValidation";
   selector: 'page-modifInfos',
   templateUrl: 'modifInfos.html'
 })
-export class ModifInfosPage {
+export class ModifInfosPage implements OnInit {
   
-  public cleaner2modify = this.navParams;
+  public cleaner2modify: ClassModify = this.navParams.data;
   public Cleaners: FormGroup;
-
-
+  
   constructor(public navCtrl: NavController,
               public alertModify: AlertModify,
               public classModify: ClassModify,
               public modifyValidation: ModifyValidation,
               public navParams: NavParams,) {
-  
-   // this.cleaner2modify = this.navParams;
-   // console.log(this.classCleaner.data); 
-
-                  }  
-
-  
+              }
 
   ngOnInit(): any {
    this.Cleaners = this.modifyValidation.newCleaner;
+   //this.navParams.data = this.classModify.allInfos;
   } 
 
   isValid(field: string) {
@@ -40,6 +34,7 @@ export class ModifInfosPage {
   
   onSubmit() {
     this.alertModify.theAlert() ;
+    console.log(this.classModify.allInfos);
   }
 
   }

@@ -9,7 +9,7 @@ newCleaner: any;
 public constructor(public formBuilder: FormBuilder)
                     {
 this.newCleaner = this.formBuilder.group({
-  'firstName': ['', Validators.compose(
+  'firstName': ['' , Validators.compose(
                [Validators.maxLength(30), 
                Validators.pattern('[a-zA-Z -]*'), 
                Validators.required])],
@@ -53,6 +53,8 @@ this.newCleaner = this.formBuilder.group({
               [Validators.maxLength(30), 
               Validators.pattern('[0-9]*'), 
               Validators.required])],
+
+  'status': [''] 
      });
   }
 }

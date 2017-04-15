@@ -21,12 +21,22 @@
     Contact: 
   </p>
   
-   <ion-list>
+    <ion-list>
+  <ion-item>
+    <ion-label>Status</ion-label>
+    <ion-select  >
+      <ion-option value="0">0</ion-option>
+      <ion-option value="1">1</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+  <ion-list>
     <form [formGroup]="Cleaners" (ngSubmit)="onSubmit()">
         
       <ion-item>
         <ion-label>First Name</ion-label>
-        <ion-input [(ngModel)]="classModify.infos.firstName" formControlName="firstName" type="text" id="firstName" spellcheck="false" autocapitalize="off">
+        <ion-input [(ngModel)]="classModify.allInfos.firstName" formControlName="firstName" type="text" id="firstName" spellcheck="false" autocapitalize="off">
         </ion-input>
       </ion-item>
       <p *ngIf="!isValid('firstName')" danger padding-left>The First Name can only contain Letters A-Z</p>
