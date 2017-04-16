@@ -21,19 +21,19 @@
     Contact: 
   </p>
   
-    <ion-list>
-  <ion-item>
+
+  <ion-list>
+    <form [formGroup]="Cleaners" (ngSubmit)="onSubmit()">
+
+
+      <ion-item>
     <ion-label>Status</ion-label>
-    <ion-select  >
+    <ion-select [(ngModel)]="this.navParams.data.status" formControlName="status">
       <ion-option value="0">0</ion-option>
       <ion-option value="1">1</ion-option>
     </ion-select>
   </ion-item>
-</ion-list>
 
-  <ion-list>
-    <form [formGroup]="Cleaners" (ngSubmit)="onSubmit()">
-        
       <ion-item>
         <ion-label>First Name</ion-label>
         <ion-input [(ngModel)]="this.navParams.data.firstName" formControlName="firstName" type="text" id="firstName" spellcheck="false" autocapitalize="off">
@@ -88,7 +88,7 @@
       <p *ngIf="!isValid('city')" danger padding-left>The City can only contain Letters A-Z and '</p>
       
       <p>
-        How far away from your Adress are you willing to travel? (in Km)
+        How far away from your Address are you willing to travel? (in Km)
       </p>
       <ion-item>
         <ion-label>Distance</ion-label>

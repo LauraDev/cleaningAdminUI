@@ -1,6 +1,6 @@
 import { OnInit, Component } from '@angular/core';
 import { NavController, AlertController, NavParams } from 'ionic-angular';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 import { BackendWs } from "../../providers/factory/backend-ws";
 import { RegisteredPage } from '../registration-submitted/registered';
@@ -14,20 +14,28 @@ import { ModifyValidation } from "../../providers/util/modifyValidation";
 export class ModifInfosPage implements OnInit {
   
  public Cleaners: FormGroup;
+ public StatusSelection: FormGroup;
   
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController,
+              public formBuilder: FormBuilder,
               public backendWs: BackendWs,
               public classModify: ClassModify,
               public modifyValidation: ModifyValidation,
               public navParams: NavParams,) {
               }
 
-  ngOnInit(): any {
-   this.Cleaners = this.modifyValidation.newCleaner;
-   this.classModify.allInfos = this.navParams.data ;
-  } 
+  // changeStatus(){
+  //   let value = this.navParams.data.status;
+  // }
 
+  ngOnInit(): any {
+    this.classModify.allInfos = this.navParams.data ;
+    this.Cleaners = this.modifyValidation.newCleaner;
+  //   this.StatusSelection = this.formBuilder.group({
+  //     'status': [''] }) 
+  }
+   
   isValid(field: string) {
     let formField = this.Cleaners.get(field);
     return formField.valid || formField.pristine;
