@@ -1,8 +1,9 @@
 import { OnInit, Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, AlertController, NavParams } from 'ionic-angular';
 import { FormGroup } from '@angular/forms';
 
-import { AlertModify } from "../../providers/factory/alertModify";
+import { BackendWs } from "../../providers/factory/backend-ws";
+import { RegisteredPage } from '../registration-submitted/registered';
 import { ClassModify } from "../../providers/dto/classModify";
 import { ModifyValidation } from "../../providers/util/modifyValidation";
 
@@ -12,11 +13,11 @@ import { ModifyValidation } from "../../providers/util/modifyValidation";
 })
 export class ModifInfosPage implements OnInit {
   
-  public cleaner2modify: ClassModify = this.navParams.data;
-  public Cleaners: FormGroup;
+ public Cleaners: FormGroup;
   
   constructor(public navCtrl: NavController,
-              public alertModify: AlertModify,
+              public alertCtrl: AlertController,
+              public backendWs: BackendWs,
               public classModify: ClassModify,
               public modifyValidation: ModifyValidation,
               public navParams: NavParams,) {
@@ -24,7 +25,7 @@ export class ModifInfosPage implements OnInit {
 
   ngOnInit(): any {
    this.Cleaners = this.modifyValidation.newCleaner;
-   //this.navParams.data = this.classModify.allInfos;
+   this.classModify.allInfos = this.navParams.data ;
   } 
 
   isValid(field: string) {
@@ -33,8 +34,43 @@ export class ModifInfosPage implements OnInit {
   }
   
   onSubmit() {
-    this.alertModify.theAlert() ;
-    console.log(this.classModify.allInfos);
+    let alert = this.alertCtrl.create({
+       title: 'Confirm Registration',
+       message: 'Do you want to submit?',
+       buttons: [
+         {
+           text: 'Cancel',
+           role: 'cancel',
+           handler: () => {
+             console.log('Cancel clicked');
+           }
+         },
+         {
+           text: 'Confirm',
+           handler: () => {
+            
+      // 1- Send 'address' to get geocode
+         // this.geocoding.sendAddress(JSON.stringify(this.dto.address)+CA&key=YOUR_API_KEY).then(
+           //    data => {
+           //     console.log(data);
+
+           // 2- Get info from google map and send it to dto.allInfos
+           //  this.geocoding.getGeocode(JSON.parse() => any) = this.dto.infos.(latitude , longitude)
+                 
+           // 3- Send all data to database
+           this.backendWs.write(JSON.stringify(this.classModify.allInfos)).then(
+             data => {
+               console.log(data);
+               this.navCtrl.push(RegisteredPage);
+               },
+             err => {
+               console.log('Error writting to Ws')
+               }
+            );
+          }
+        }]
+    })
+    alert.present() 
   }
 
   }

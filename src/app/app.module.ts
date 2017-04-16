@@ -21,8 +21,6 @@ import { ModifyValidation } from "../providers/util/modifyValidation";
 import { AuthService } from "../providers/factory/authservice";
 import { BackendWs } from "../providers/factory/backend-ws";
 import { Geocoding } from "../providers/factory/geocoding";
-import { AlertRegistration } from '../providers/factory/alertRegistration'
-import { AlertModify } from '../providers/factory/alertModify'
 
 @NgModule({
   declarations: [
@@ -57,9 +55,7 @@ import { AlertModify } from '../providers/factory/alertModify'
     FormValidation,
     ModifyValidation,
     ClassCleaner,
-    ClassModify,
-    AlertRegistration,
-    AlertModify
+    ClassModify
   ],
   
 
