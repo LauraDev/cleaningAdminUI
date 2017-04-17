@@ -13,7 +13,7 @@ export class ClassCleaner {
            latitude: string, 
            longitude: string, 
            distance: string,
-           status: number, } = {
+           status: string, } = {
     uuid: UUID.UUID(),
     firstName: 'Luc',
     lastName: 'T',
@@ -22,7 +22,7 @@ export class ClassCleaner {
     latitude: '',
     longitude: '',
     distance: '5',
-    status: 0,
+    status: '0',
    };
 
    address: { number: string, 

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 
 import { BackendWs} from "../../providers/factory/backend-ws";
 
 import { ModifInfosPage } from '../modifInfos/modifInfos';
+import { RegistrationPage } from '../registration/registration';
 
 @Component({
   selector: 'page-admin',
@@ -15,6 +16,7 @@ export class AdminPage {
   cleaner: any;  
 
   constructor(public navCtrl: NavController,
+              public alertCtrl: AlertController,
               private backendWs: BackendWs) {
     // console.log(backendWs.list());
 
@@ -33,13 +35,54 @@ export class AdminPage {
     );
   }
   
-  toogle(allCleaners) {
-    //  console.log(event.target.id);
-    let elementId: string = (event.target as Element).id;
-      // console.log(elementId);      
-      this.cleaner = this.allCleaners.find(allCleaners => 
-                          allCleaners.uuid === elementId);
-
-      this.navCtrl.push(ModifInfosPage, this.cleaner)   
-    }
+  goToOtherPage() {
+    this.navCtrl.push(RegistrationPage);
   }
+  
+  edit(allCleaner) {
+         
+   this.cleaner = this.allCleaners.find(allCleaners => 
+     allCleaners.uuid === allCleaner.uuid);
+
+   this.navCtrl.push(ModifInfosPage, this.cleaner)
+  }   
+
+    dash(allCleaner) {
+         
+      let alert = this.alertCtrl.create({
+        title: 'DELETE',
+        message: 'Do you really want to DELETE this contact?',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              //console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Delete',
+            handler: () => {
+             
+//              this.cleaner = this.allCleaners.find(allCleaners => 
+//                              allCleaners.uuid === allCleaner.uuid);
+  console.log(allCleaner.uuid),
+              this.backendWs.dash(allCleaner.uuid).then(
+                data => {
+                  console.log(data),
+                err => {
+                  console.log('Error writting to Ws')
+                }
+                           
+       })}}]
+     })
+     alert.present() 
+   }
+ }
+
+
+// this.allCleaners.splice(this.allCleaners.findIndex(
+//                allCleaners => 
+//                allCleaners.uuid === allCleaner.uuid
+//              )
+   

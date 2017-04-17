@@ -14,12 +14,15 @@
 
 
 <ion-content padding>
-   <p center>
+   <p text-center color="red">
     BE AWARE: DON'T REGISTER A NEW CLEANER FROM THIS PAGE! 
   </p>
-  <p>
+  
+  <ion-card>
+  <ion-card-content>
+  <ion-card-header><p>
     Contact: 
-  </p>
+  </p></ion-card-header>
   
 
   <ion-list>
@@ -59,9 +62,9 @@
       </ion-item>
       <p *ngIf="!isValid('email')" danger padding-left>Invalid E-mail</p>
 
-      <p>
+      <ion-card-header><p>
         Address:
-      </p>
+      </p></ion-card-header>
       <ion-item>
         <ion-label>Street Number</ion-label>
         <ion-input [(ngModel)]="this.navParams.data.number" type="text" formControlName="number" id="number" spellcheck="false" autocapitalize="off"></ion-input>
@@ -87,9 +90,9 @@
       </ion-item>
       <p *ngIf="!isValid('city')" danger padding-left>The City can only contain Letters A-Z and '</p>
       
-      <p>
+      <ion-card-header><p>
         How far away from your Address are you willing to travel? (in Km)
-      </p>
+      </p></ion-card-header>
       <ion-item>
         <ion-label>Distance</ion-label>
         <ion-input [(ngModel)]="this.navParams.data.distance" type="text" formControlName="distance" id="distance" spellcheck="false" autocapitalize="off"></ion-input>
@@ -105,5 +108,6 @@
 
     </form>
   </ion-list>
-
+   </ion-card-content>
+  </ion-card>
 </ion-content>

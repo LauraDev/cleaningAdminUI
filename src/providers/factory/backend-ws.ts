@@ -37,5 +37,18 @@ export class BackendWs {
     });
   }
 
-
+ public dash(value: any): Promise<string>{
+     // return new Promise((resolve, reject) => resolve('ok'));
+     return new Promise(resolve => {
+       let headers = new Headers({
+         'Content-Type': 'application/json',
+       });
+       let options = new RequestOptions({ headers: headers });
+       this.http.delete(this.backendWsUrl, options)
+         .subscribe(data => {
+           resolve(data);
+           console.log(data)
+         });
+     });
+  }
 }

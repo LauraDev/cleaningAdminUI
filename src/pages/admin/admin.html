@@ -1,3 +1,4 @@
+
 <ion-header>
   <ion-navbar>
     <ion-title>
@@ -7,32 +8,94 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>
-    Cleaners List
-  </h3>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col>First Name</ion-col>
-      <ion-col>Last Name</ion-col>
-      <ion-col>Mobile</ion-col>
-      <ion-col>Status</ion-col>
-      <ion-col>Modify</ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-row>
+    <ion-col>
+      <h2 text-left>
+        Registered CLeaners
+      </h2>
+    </ion-col>
+    <ion-col>
+      <div text-right>
+        <button ion-button round (click)="goToOtherPage()"> Register a new Cleaner
+        </button> 
+      </div>  
+    </ion-col>
+  </ion-row>
 
-  <ion-grid *ngFor="let allCleaner of allCleaners ">
-    <ion-row>
-      <ion-col>{{ allCleaner.firstName | json }}</ion-col>
-      <ion-col>{{ allCleaner.lastName | json }}</ion-col>
-      <ion-col>{{ allCleaner.phone | json }}</ion-col>
-      <ion-col>{{ allCleaner.status | json }}</ion-col>
-      <ion-col>
-        <button ion-button (click)="toogle()"
-          id="{{ allCleaner.uuid }}">X
-        </button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-card *ngFor="let allCleaner of allCleaners ">
+       
+    <ion-card-content>
+      <h1  icon-left clear small>
+        <ion-icon name="contact"></ion-icon>
+        <b>{{ allCleaner.firstName }} , {{ allCleaner.lastName }}</b>
+      </h1>
+      <p>{{ allCleaner.number }} , {{ allCleaner.street }}</p>
+      <p>{{ allCleaner.phone }}</p>
+    
+      <ion-row>
+        <ion-col icon-left clear small>
+          <ion-icon name="flag"></ion-icon>
+          <b>Status :</b> {{ allCleaner.status }}
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small (click)="edit(allCleaner)" id="{{ allCleaner.uuid }}">
+            <ion-icon name="folder-open"></ion-icon>
+            <div>Edit</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small (click)="dash(allCleaner)" id="{{ allCleaner.uuid }}">
+            <ion-icon name="trash"></ion-icon>
+            <div>Delete</div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>  
+
+<!--
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Cleaning App
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h1>
+    Registered CLeaners
+  </h1>
+
+  <ion-card *ngFor="let allCleaner of allCleaners ">
+       
+    <ion-card-content margin>
+      <h1  icon-left clear small>
+        <ion-icon name="contact"></ion-icon>
+        <b>{{ allCleaner.firstName }} , {{ allCleaner.lastName }}</b>
+      </h1>
+      <p>{{ allCleaner.number }} , {{ allCleaner.street }}</p>
+      <p>{{ allCleaner.phone }}</p>
+    
+      <ion-row>
+        <ion-col icon-left clear small>
+          <ion-icon name="flag"></ion-icon>
+          <b>Status :</b> {{ allCleaner.status }}
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small (click)="toogle()" id="{{ allCleaner.uuid }}">
+            <ion-icon name="folder-open"></ion-icon>
+            <div>Modify</div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>  
+
+-->

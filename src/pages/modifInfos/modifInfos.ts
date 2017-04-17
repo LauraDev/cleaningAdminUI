@@ -3,7 +3,7 @@ import { NavController, AlertController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 import { BackendWs } from "../../providers/factory/backend-ws";
-import { RegisteredPage } from '../registration-submitted/registered';
+import { AdminPage } from '../admin/admin';
 import { ClassModify } from "../../providers/dto/classModify";
 import { ModifyValidation } from "../../providers/util/modifyValidation";
 
@@ -69,7 +69,7 @@ export class ModifInfosPage implements OnInit {
            this.backendWs.write(JSON.stringify(this.classModify.allInfos)).then(
              data => {
                console.log(data);
-               this.navCtrl.push(RegisteredPage);
+               this.navCtrl.push(AdminPage);
                },
              err => {
                console.log('Error writting to Ws')

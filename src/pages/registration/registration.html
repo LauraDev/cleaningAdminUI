@@ -15,73 +15,74 @@
     Please fill in your details to register:
   </p>
 
+<ion-card>
+  <ion-card-content>
   <ion-list>
     <form [formGroup]="Cleaners" (ngSubmit)="onSubmit()">
 
       <ion-item>
-        <ion-label floating>First Name</ion-label>
+        <ion-label>First Name</ion-label>
         <ion-input [(ngModel)]="cleaner.firstName" formControlName="firstName" type="text" id="firstName" spellcheck="false" autocapitalize="off">
         </ion-input>
       </ion-item>
       <p *ngIf="!isValid('firstName')" danger padding-left>The First Name can only contain Letters A-Z</p>
 
       <ion-item>
-        <ion-label floating>Last name</ion-label>
+        <ion-label>Last name</ion-label>
         <ion-input [(ngModel)]="cleaner.lastName" formControlName="lastName" type="text" id="lastName" spellcheck="false" autocapitalize="off"></ion-input>
       </ion-item>
       <p *ngIf="!isValid('lastName')" danger padding-left>The Last Name can only contain Letters A-Z</p>
 
       <ion-item>
-        <ion-label floating>Mobile Phone</ion-label>
+        <ion-label>Mobile Phone</ion-label>
         <ion-input [(ngModel)]="cleaner.phone" type="text" formControlName="phone" id="phone" spellcheck="false" autocapitalize="off"></ion-input>
       </ion-item>
       <p *ngIf="!isValid('phone')" danger padding-left>The Phone Number can only contain 10 Digits</p>
 
       <ion-item>
-        <ion-label floating>E-mail</ion-label>
+        <ion-label>E-mail</ion-label>
         <ion-input [(ngModel)]="cleaner.email" formControlName="email" type="text" id="email" spellcheck="false" autocapitalize="off"></ion-input>
       </ion-item>
       <p *ngIf="!isValid('email')" danger padding-left>Invalid E-mail</p>
 
-      <p>
+      <ion-card-header><p>
         Address:
-      </p>
+      </p></ion-card-header>
       <ion-item>
-        <ion-label floating>Street Number</ion-label>
+        <ion-label>Street Number</ion-label>
         <ion-input [(ngModel)]="cleaner.number" type="text" formControlName="number" id="number" spellcheck="false" autocapitalize="off"></ion-input>
       </ion-item>
       <p *ngIf="!isValid('number')" class=
       "alert alert-danger" padding-left>The Street Number can only contain Letters A-Z, Digits 0-9 and '-/</p>
 
       <ion-item>
-        <ion-label floating>Street</ion-label>
+        <ion-label>Street</ion-label>
         <ion-input [(ngModel)]="cleaner.street" type="text" formControlName="street" id="street" spellcheck="false" autocapitalize="off"></ion-input>
       </ion-item>
       <p *ngIf="!isValid('street')" danger padding-left>The Street Name can only contain Letters A-Z</p>
 
       <ion-item>
-        <ion-label floating>Postcode</ion-label>
+        <ion-label>Postcode</ion-label>
         <ion-input [(ngModel)]="cleaner.postcode" type="text" formControlName="postcode" id="postcode" spellcheck="false" autocapitalize="off"></ion-input>
       </ion-item>
       <p *ngIf="!isValid('postcode')" danger padding-left>The Postcode can only contain Letters A-Z, Digits 0-9 and -/</p>
 
       <ion-item>
-        <ion-label floating>City</ion-label>
+        <ion-label>City</ion-label>
         <ion-input [(ngModel)]="cleaner.city" type="text" formControlName="city" id="city" spellcheck="false" autocapitalize="off"></ion-input>
       </ion-item>
       <p *ngIf="!isValid('city')" danger padding-left>The City can only contain Letters A-Z and '</p>
       
-      <p>
+      <ion-card-header><p>
         How far away from your Address are you willing to travel? (in Km)
-      </p>
+      </p></ion-card-header>
       <ion-item>
-        <ion-label floating>Distance</ion-label>
+        <ion-label>Distance</ion-label>
         <ion-input [(ngModel)]="cleaner.distance" type="text" formControlName="distance" id="distance" spellcheck="false" autocapitalize="off"></ion-input>
       </ion-item>
       <p *ngIf="!isValid('distance')" danger padding-left>Invalid Distance'</p>
-
-
       
+        
       <div text-center>
         <button ion-button round type="submit" [disabled]="!Cleaners.valid"> Register
         </button>
@@ -89,4 +90,6 @@
 
     </form>
   </ion-list>
+  </ion-card-content>
+  </ion-card>
 </ion-content>
