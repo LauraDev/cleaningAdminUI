@@ -20,7 +20,6 @@ import { ModifyValidation } from "../providers/util/modifyValidation";
 
 import { AuthService } from "../providers/factory/authservice";
 import { BackendWs } from "../providers/factory/backend-ws";
-import { Geocoding } from "../providers/factory/geocoding";
 
 @NgModule({
   declarations: [
@@ -51,7 +50,6 @@ import { Geocoding } from "../providers/factory/geocoding";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
     BackendWs,
-    Geocoding,
     FormValidation,
     ModifyValidation,
     ClassCleaner,

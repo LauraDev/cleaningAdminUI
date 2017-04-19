@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AuthService } from "../providers/factory/authservice";
 import { BackendWs } from "../providers/factory/backend-ws";
-import { Geocoding } from "../providers/factory/geocoding";
 import { ClassCleaner } from "../providers/dto/classCleaner";
 import { ClassModify } from "../providers/dto/classModify";
 import { FormValidation } from "../providers/util/formValidation";
@@ -23,7 +22,6 @@ export class MyApp {
               statusBar: StatusBar, 
               splashScreen: SplashScreen, 
               authService: AuthService,
-              geocoding: Geocoding, 
               formValidation: FormValidation,
               modifyValidation: ModifyValidation,
               classCleaner: ClassCleaner,
