@@ -11,24 +11,30 @@
     Registration
   </h1>
 
-  <p>
-    Please fill in your details to register:
+  <p text-center>
+    Please fill in details to register:
   </p>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+    </ion-col>
+  
+    <ion-col>
+      <ion-card>
+        <ion-card-content>
+          <ion-list>
+          <form [formGroup]="Cleaners" (ngSubmit)="onSubmit()">
 
-<ion-card>
-  <ion-card-content>
-  <ion-list>
-    <form [formGroup]="Cleaners" (ngSubmit)="onSubmit()">
-
-    <ion-card-header><p>
-      Contact: 
-    </p></ion-card-header>
-      <ion-item>
-        <ion-label>First Name</ion-label>
-        <ion-input [(ngModel)]="cleaner.firstName" formControlName="firstName" type="text" id="firstName" spellcheck="false" autocapitalize="off">
-        </ion-input>
-      </ion-item>
-      <p *ngIf="!isValid('firstName')" danger padding-left>The First Name can only contain Letters A-Z</p>
+            <ion-card-header><p>
+              Contact: 
+            </p></ion-card-header>
+      
+            <ion-item>
+              <ion-label>First Name</ion-label>
+              <ion-input [(ngModel)]="cleaner.firstName" formControlName="firstName" type="text" id="firstName" spellcheck="false" autocapitalize="off">
+              </ion-input>
+            </ion-item>
+            <p *ngIf="!isValid('firstName')" danger padding-left>The First Name can only contain Letters A-Z</p>
 
       <ion-item>
         <ion-label>Last name</ion-label>
@@ -77,7 +83,7 @@
       <p *ngIf="!isValid('city')" danger padding-left>The City can only contain Letters A-Z and '</p>
       
       <ion-card-header><p>
-        How far away from your Address are you willing to travel? (in Km)
+        How far away from its address is the Cleaner willing to travel? (in Km)
       </p></ion-card-header>
       <ion-item>
         <ion-label>Distance</ion-label>
@@ -91,8 +97,15 @@
         </button>
       </div>
 
-    </form>
-  </ion-list>
-  </ion-card-content>
-  </ion-card>
+              </form>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
 </ion-content>

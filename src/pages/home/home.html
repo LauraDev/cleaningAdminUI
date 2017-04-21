@@ -1,29 +1,52 @@
-  <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Cleaning App
-    </ion-title>
+<ion-header>
+
+  <ion-navbar >
+    <ion-title>Login</ion-title>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
-  <h1>
-    Welcome to Cleaning App !
-  </h1>
-  <p>
-    To join our team and work with us as a Cleaner, Please register here:
-  </p>
-  <div text-center>
-    <button ion-button round (click)="goToOtherPage()"> Registration
-    </button> 
-  </div>  
-</ion-content>
 
-<ion-footer>
-  <ion-toolbar>
-    <div text-center>
-      <button (click)="goToOtherPage2()"> Administration
-      </button>
-    </div>
-  </ion-toolbar>
-</ion-footer>
+<ion-content class="home-content" padding>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <h1>
+          Welcome to Cleaning App !
+        </h1>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col>
+      </ion-col>
+
+      <ion-col>
+        <ion-card color="lavender">
+          <form (ngSubmit)="login()" #registerForm="ngForm" >
+            <ion-list inset>
+              <ion-item color="lavender">
+                 <ion-label fixed color="dark">Username :</ion-label>
+                <ion-input type="text" placeholder="User" name="user" [(ngModel)]="registerCredentials.user" required></ion-input>
+              </ion-item>
+            
+              <ion-item color="lavender">
+                <ion-label fixed color="dark">Password :</ion-label>
+                <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+              </ion-item>
+            </ion-list>
+        
+            <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Login</button>
+          
+          </form>
+        </ion-card>  
+      </ion-col>
+    
+      <ion-col>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

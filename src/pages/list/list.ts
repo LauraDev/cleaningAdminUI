@@ -4,13 +4,14 @@ import { NavController, AlertController } from 'ionic-angular';
 import { BackendWs} from "../../providers/factory/backend-ws";
 
 import { ModifInfosPage } from '../modifInfos/modifInfos';
+import { DashBoardPage } from '../dashBoard/dashBoard';
 import { RegistrationPage } from '../registration/registration';
 
 @Component({
-  selector: 'page-admin',
-  templateUrl: 'admin.html'
+  selector: 'page-list',
+  templateUrl: 'list.html'
 })
-export class AdminPage {
+export class ListPage {
 
   allCleaners= new Array();
   
@@ -34,6 +35,9 @@ export class AdminPage {
   goToOtherPage() {
     this.navCtrl.push(RegistrationPage);
   }
+  goToOtherPage3() {
+    this.navCtrl.push(DashBoardPage);
+  }
   
   edit(allCleaner) {
     this.navCtrl.push(ModifInfosPage, allCleaner)
@@ -56,7 +60,7 @@ export class AdminPage {
         handler: () => {
           this.backendWs.dash(JSON.stringify(allCleaner)).then(
             data => {
-              this.navCtrl.push(AdminPage); 
+              this.navCtrl.push(ListPage); 
               err => {
                 console.log('Error writting to Ws')
               }

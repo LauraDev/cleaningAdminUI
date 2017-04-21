@@ -3,7 +3,7 @@ import { NavController, AlertController } from 'ionic-angular';
 import { FormGroup } from '@angular/forms';
 
 import { BackendWs } from "../../providers/factory/backend-ws";
-import { RegisteredPage } from '../registration-submitted/registered';
+import { DashBoardPage } from '../dashBoard/dashBoard';
 import { ClassCleaner } from "../../providers/dto/classCleaner";
 import { FormValidation } from "../../providers/util/formValidation";
 
@@ -40,7 +40,7 @@ public constructor(public navCtrl: NavController,
   onSubmit() {
     let alert = this.alertCtrl.create({
        title: 'Confirm Registration',
-       message: 'Do you want to submit your details?',
+       message: 'Do you want to submit?',
        buttons: [
          {
            text: 'Cancel',
@@ -57,30 +57,42 @@ public constructor(public navCtrl: NavController,
              this.backendWs.goecReq(JSON.stringify(this.classCleaner.allInfos)).then(
                // 2- Get Geocodes
                data => {
-                 for (let infoAddr of data) {
+                 if (data.length > 0){
+                   //console.log('ok')
+                   for (let infoAddr of data) {
                         this.geocode = infoAddr; 
                         this.lat = this.geocode.latitude; 
                         this.lng = this.geocode.longitude; 
                // 3- Set Latitute && Longitude in classModify
                           this.classCleaner.allInfos.latitude = this.lat;
                           this.classCleaner.allInfos.longitude = this.lng;
-                        //console.log(JSON.stringify(this.classCleaner.allInfos));
-             //4- Send all datas to database             
-             this.backendWs.write(JSON.stringify(this.classCleaner.allInfos)).then(
-               data => {
-                 //console.log(this.classCleaner.allInfos);
-                 this.navCtrl.push(RegisteredPage);
-               }
-             )
+                   }
+              //4- Send all datas to database             
+                   this.backendWs.write(JSON.stringify(this.classCleaner.allInfos)).then(
+                     data => {
+                       //console.log(this.classCleaner.allInfos);
+                       this.navCtrl.push(DashBoardPage);
+                     }
+                   )
                  }
-                 err => {
-                   console.log('Error reading to Ws')
-                }
-               }, 
+                 else {
+                   //console.log('Invalid Address')
+                   let alert = this.alertCtrl.create({
+                     title: 'ERROR',
+                     subTitle: 'Invalid Address',
+                     buttons: ['OK']
+                     });
+                     alert.present(prompt);
+                 }
+               },
+               err => {
+                 console.log('error reading Ws')
+               }
              );
            }
-        }]
-    })
-    alert.present() 
+         }, 
+       ]
+     })
+   alert.present() 
   }
 }

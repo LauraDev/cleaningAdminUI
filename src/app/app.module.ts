@@ -3,14 +3,14 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { HomePage } from '../pages/home/home';
 
-import { AdminPage } from '../pages/admin/admin';
-import { LoginPage } from '../pages/login/login';
+import { ListPage } from '../pages/list/list';
+import { DashBoardPage } from '../pages/dashBoard/dashBoard';
 import { ModifInfosPage } from '../pages/modifInfos/modifInfos';
 import { RegistrationPage } from '../pages/registration/registration';
-import { RegisteredPage } from '../pages/registration-submitted/registered';
 
 import { ClassCleaner } from "../providers/dto/classCleaner";
 import { ClassModify } from "../providers/dto/classModify";
@@ -26,22 +26,21 @@ import { BackendWs } from "../providers/factory/backend-ws";
     MyApp,
     HomePage,
     RegistrationPage,
-    AdminPage,
-    RegisteredPage,
-    LoginPage,
+    ListPage,
+    DashBoardPage,
     ModifInfosPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     RegistrationPage,
-    AdminPage,
-    RegisteredPage,
-    LoginPage,
+    ListPage,
+    DashBoardPage,
     ModifInfosPage
   ],
   providers: [

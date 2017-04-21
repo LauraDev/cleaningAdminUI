@@ -11,10 +11,18 @@
 
   <ion-row>
     <ion-col>
-      <h2 text-left>
+      <h2 text-left margin-left>
         Registered Cleaners
       </h2>
     </ion-col>
+
+    <ion-col>
+      <div text-center>
+        <button ion-button round (click)="goToOtherPage3()"> DashBoard
+        </button> 
+      </div>  
+    </ion-col>
+
     <ion-col>
       <div text-right>
         <button ion-button round (click)="goToOtherPage()"> Register a new Cleaner
@@ -23,37 +31,54 @@
     </ion-col>
   </ion-row>
 
-  <ion-card *ngFor="let allCleaner of allCleaners ">
+  
+    <ion-card margin-top *ngFor="let allCleaner of allCleaners " 
+            [ngClass]="( allCleaner.status == 1) ? 'bold': 'normal'">
        
     <ion-card-content>
-      <h1  icon-left clear small>
-        <ion-icon name="contact"></ion-icon>
-        <b>{{ allCleaner.firstName }} , {{ allCleaner.lastName }}</b>
-      </h1>
-      <p>{{ allCleaner.number }} , {{ allCleaner.street }}</p>
-      <p>{{ allCleaner.phone }}</p>
-    
+      
       <ion-row>
+        
+        <ion-col>
+          <h1 icon-left clear small>
+            <ion-icon name="contact"></ion-icon>
+            <b>{{ allCleaner.firstName }} , {{ allCleaner.lastName }}</b>
+          </h1>
+        </ion-col>
+
         <ion-col icon-left clear small>
           <ion-icon name="flag"></ion-icon>
           <b>Status :</b> {{ allCleaner.status }}
         </ion-col>
+        
+        <ion-col>
+          <p icon-left clear small>
+          <ion-icon name="mail"></ion-icon>{{ allCleaner.number }} , {{ allCleaner.street }}</p>
+        </ion-col>
+
+        <ion-col>
+          <p icon-left clear small>
+          <ion-icon name="phone-portrait"></ion-icon>{{ allCleaner.phone }}</p>
+        </ion-col>
+
         <ion-col>
           <button ion-button icon-left clear small (click)="edit(allCleaner)" id="{{ allCleaner.uuid }}">
             <ion-icon name="folder-open"></ion-icon>
             <div>Edit</div>
           </button>
         </ion-col>
+
         <ion-col>
           <button ion-button icon-left clear small (click)="dash(allCleaner)" id="{{ allCleaner.uuid }}">
             <ion-icon name="trash"></ion-icon>
             <div>Delete</div>
           </button>
         </ion-col>
+
       </ion-row>
     </ion-card-content>
   </ion-card>
-
+    
 </ion-content>  
 
 <!--

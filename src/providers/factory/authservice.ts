@@ -17,7 +17,7 @@ export class AuthService {
   currentUser: User;
  
   public login(credentials) {
-    if (credentials.email === null || credentials.password === null) {
+    if (credentials.user === null || credentials.password === null) {
       return Observable.throw("Please insert credentials");
     } else {
         return Observable.create(observer => {
@@ -25,7 +25,7 @@ export class AuthService {
         // At this point make a request to your backend to make a real check!
         let access = (credentials.password === "Password"
           //"pass" 
-          && credentials.email === "Email");
+          && credentials.user === "Admin");
         //this.currentUser = new User('Simon', 'saimon@devdactic.com');
         observer.next(access);
         observer.complete();
@@ -34,7 +34,7 @@ export class AuthService {
   }
  
     public register(credentials) {
-      if (credentials.email === null || credentials.password === null) {
+      if (credentials.user === null || credentials.password === null) {
         return Observable.throw("Please insert credentials");
       } else {
       // At this point store the credentials to your backend!

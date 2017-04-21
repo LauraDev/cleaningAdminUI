@@ -14,10 +14,16 @@
 
 
 <ion-content padding>
-   <p text-center color="red">
-    BE AWARE: DON'T REGISTER A NEW CLEANER FROM THIS PAGE! 
+   <p text-center color="danger">
+    BE AWARE: DO NOT REGISTER A NEW CLEANER FROM THIS PAGE! 
   </p>
   
+  <ion-grid>
+    <ion-row>
+  <ion-col>
+  </ion-col>
+  
+  <ion-col>
   <ion-card>
   <ion-card-content>
   <ion-card-header><p>
@@ -28,14 +34,23 @@
   <ion-list>
     <form [formGroup]="Cleaners" (ngSubmit)="onSubmit()">
 
-
+<ion-grid no-padding>
+  <ion-row>
+    <ion-col>
       <ion-item>
-    <ion-label>Status</ion-label>
+    <ion-label color="primary">Status</ion-label>
     <ion-select [(ngModel)]="this.navParams.data.status" formControlName="status">
       <ion-option value="0">0</ion-option>
       <ion-option value="1">1</ion-option>
     </ion-select>
   </ion-item>
+    </ion-col>
+    <ion-col>
+    </ion-col>
+    <ion-col>
+    </ion-col>
+  </ion-row>
+</ion-grid>
 
       <ion-item>
         <ion-label>First Name</ion-label>
@@ -91,7 +106,7 @@
       <p *ngIf="!isValid('city')" danger padding-left>The City can only contain Letters A-Z and '</p>
       
       <ion-card-header><p>
-        How far away from your Address are you willing to travel? (in Km)
+        How far away from its address is the Cleaner willing to travel? (in Km)
       </p></ion-card-header>
       <ion-item>
         <ion-label>Distance</ion-label>
@@ -110,4 +125,11 @@
   </ion-list>
    </ion-card-content>
   </ion-card>
+      </ion-col>
+
+      <ion-col>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
