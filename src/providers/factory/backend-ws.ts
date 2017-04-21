@@ -62,20 +62,10 @@ export class BackendWs {
       });
       let options = new RequestOptions({ headers: headers });
       this.http.post(this.backendWsUrl3 , value , options)
+       .map(res => res.json())
         .subscribe(data => {
           resolve(data);
         });
     });
    }
-
-   public geocRes(): Promise<Array<Object>>{
-    // return new Promise((resolve, reject) => resolve('ok'));
-    return new Promise(resolve => {
-      this.http.get(this.backendWsUrl3)
-        .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        });
-    });
-    }
-   } 
+ } 

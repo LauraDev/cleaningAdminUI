@@ -16,9 +16,9 @@ export class AdminPage {
   
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController,
-              private backendWs: BackendWs) {
-   
-    this.backendWs.list().then(
+              private backendWs: BackendWs) 
+              
+  { this.backendWs.list().then(
       data => {
         for (let cleaner of data) {
           let realcleaner = cleaner as any;

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 export class ClassModify {
     
-  infos: { uuid: string,
+  allInfos: { uuid: string,
            firstName: string, 
            lastName: string, 
            phone: string, 
@@ -12,7 +12,11 @@ export class ClassModify {
            latitude: string, 
            longitude: string, 
            distance: string,
-           status: string, } = {
+           status: string, 
+           number: string, 
+           street: string, 
+           postcode: string, 
+           city: string } = {
     uuid: '',
     firstName: '',
     lastName: '',
@@ -22,18 +26,9 @@ export class ClassModify {
     longitude: '',
     distance: '',
     status: '',
+    number: '',
+    street: '',
+    postcode: '',
+    city: '',
    };
-
-   address: { number: string, 
-             street: string, 
-             postcode: string, 
-             city: string } = {
-     number: '',
-     street: '',
-     postcode: '',
-     city: '',
-  }
-  
-allInfos = Object.assign (this.infos, this.address)
-
 }

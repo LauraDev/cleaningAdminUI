@@ -14,7 +14,10 @@ import { ModifyValidation } from "../../providers/util/modifyValidation";
 export class ModifInfosPage implements OnInit {
   
   public Cleaners: FormGroup;
-   
+  public geocode: any; 
+  public lat: string;
+  public lng: string;
+
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController,
               public formBuilder: FormBuilder,
@@ -49,44 +52,35 @@ export class ModifInfosPage implements OnInit {
          {
            text: 'Confirm',
            handler: () => {
-             console.log(JSON.stringify(
-               this.classModify.allInfos.number + ' ' +
-               this.classModify.allInfos.street +  ' ' +
-               this.classModify.allInfos.city +  ' ' +
-               this.classModify.allInfos.postcode)); 
-      // 1- Send 'address' to WS (ask for geocodes)
-             this.backendWs.goecReq(JSON.stringify(this.classModify.address)).then(
+            
+             // 1- Send 'address' to WS (ask for geocodes)
+             this.backendWs.goecReq(JSON.stringify(this.classModify.allInfos)).then(
+               // 2- Get Geocodes
                data => {
-                 console.log(JSON.stringify(data)); 
-              }
-             );   
-         //    data => {
-            //      for (let geocode of data) {
-            //        let realcleaner = geocode as any;
-            //        //this.classModify.allInfos.latitude = geocode.latitude;
-                   //this.classModify.allInfos.longitude = geocode.longitude;
-                   //console.log(this.classModify.allInfos.latitude);
-                   //console.log(this.classModify.allInfos.longitude);
-            //      }
-            //    },
-            //    err => {
-            //      console.log('Error reading to Ws')
-            //    }
-            //  );
-  
-      // 3- Send all data to database
+                 for (let infoAddr of data) {
+                        this.geocode = infoAddr; 
+                        this.lat = this.geocode.latitude; 
+                        this.lng = this.geocode.longitude; 
+               // 3- Set Latitute && Longitude in classModify
+                          this.classModify.allInfos.latitude = this.lat;
+                          this.classModify.allInfos.longitude = this.lng;
+                          //console.log(JSON.stringify(this.classModify.allInfos));
+             //4- Send all datas to database             
              this.backendWs.write(JSON.stringify(this.classModify.allInfos)).then(
-               data => {
-                 console.log(data);
+                data => {
+                 //console.log(this.classCleaner.allInfos);
                  this.navCtrl.push(AdminPage);
-               },
-               err => {
-                 console.log('Error writting to Ws')
                }
+             )
+                 }
+               },
+                 err => {
+                   console.log('Error reading to Ws')
+                }
              );
            }
         }]
-      })
-      alert.present() 
-   }
+    })
+    alert.present() 
+  }
 }

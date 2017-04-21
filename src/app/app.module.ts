@@ -55,8 +55,6 @@ import { BackendWs } from "../providers/factory/backend-ws";
     ClassCleaner,
     ClassModify
   ],
-  
-
 
 })
 export class AppModule {}

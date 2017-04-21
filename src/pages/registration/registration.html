@@ -20,6 +20,9 @@
   <ion-list>
     <form [formGroup]="Cleaners" (ngSubmit)="onSubmit()">
 
+    <ion-card-header><p>
+      Contact: 
+    </p></ion-card-header>
       <ion-item>
         <ion-label>First Name</ion-label>
         <ion-input [(ngModel)]="cleaner.firstName" formControlName="firstName" type="text" id="firstName" spellcheck="false" autocapitalize="off">

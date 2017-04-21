@@ -5,7 +5,7 @@ import {UUID} from 'angular2-uuid';
 
 export class ClassCleaner {
     
-  infos: { uuid: string,
+  allInfos: { uuid: string,
            firstName: string, 
            lastName: string, 
            phone: string, 
@@ -13,7 +13,11 @@ export class ClassCleaner {
            latitude: string, 
            longitude: string, 
            distance: string,
-           status: string, } = {
+           status: string, 
+           number: string, 
+           street: string, 
+           postcode: string, 
+           city: string } = {
     uuid: UUID.UUID(),
     firstName: 'Luc',
     lastName: 'T',
@@ -23,19 +27,9 @@ export class ClassCleaner {
     longitude: '',
     distance: '5',
     status: '0',
-   };
-
-   address: { number: string, 
-             street: string, 
-             postcode: string, 
-             city: string } = {
-     number: '1',
-     street: 'main street',
-     postcode: 'f1',
-     city: 'ottawa',
-  }
-  
-allInfos = Object.assign (this.infos, this.address)
-
-
+    number: '1',
+    street: 'main street',
+    postcode: 'f1',
+    city: 'ottawa',
+    };
 }

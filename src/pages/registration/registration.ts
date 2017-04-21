@@ -15,6 +15,9 @@ export class RegistrationPage implements OnInit{
 
 public Cleaners: FormGroup;
 public cleaner: any;
+public geocode: any; 
+public lat: string;
+public lng: string;
 
 public constructor(public navCtrl: NavController,
                    public alertCtrl: AlertController,
@@ -50,25 +53,32 @@ public constructor(public navCtrl: NavController,
            text: 'Confirm',
            handler: () => {
             
-      // 1- Send 'address' to get geocode
-         // this.geocoding.sendAddress(JSON.stringify(this.dto.address)+CA&key=YOUR_API_KEY).then(
-           //    data => {
-           //     console.log(data);
-
-           // 2- Get info from google map and send it to dto.allInfos
-           //  this.geocoding.getGeocode(JSON.parse() => any) = this.dto.infos.(latitude , longitude)
-                 
-           // 3- Send all data to database
-           this.backendWs.write(JSON.stringify(this.classCleaner.allInfos)).then(
-             data => {
-               console.log(data);
-               this.navCtrl.push(RegisteredPage);
-               },
-             err => {
-               console.log('Error writting to Ws')
+             // 1- Send 'address' to WS (ask for geocodes)
+             this.backendWs.goecReq(JSON.stringify(this.classCleaner.allInfos)).then(
+               // 2- Get Geocodes
+               data => {
+                 for (let infoAddr of data) {
+                        this.geocode = infoAddr; 
+                        this.lat = this.geocode.latitude; 
+                        this.lng = this.geocode.longitude; 
+               // 3- Set Latitute && Longitude in classModify
+                          this.classCleaner.allInfos.latitude = this.lat;
+                          this.classCleaner.allInfos.longitude = this.lng;
+                        //console.log(JSON.stringify(this.classCleaner.allInfos));
+             //4- Send all datas to database             
+             this.backendWs.write(JSON.stringify(this.classCleaner.allInfos)).then(
+               data => {
+                 //console.log(this.classCleaner.allInfos);
+                 this.navCtrl.push(RegisteredPage);
                }
-            );
-          }
+             )
+                 }
+                 err => {
+                   console.log('Error reading to Ws')
+                }
+               }, 
+             );
+           }
         }]
     })
     alert.present() 

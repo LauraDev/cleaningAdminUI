@@ -34,16 +34,16 @@ export class AuthService {
   }
  
     public register(credentials) {
-    if (credentials.email === null || credentials.password === null) {
-      return Observable.throw("Please insert credentials");
-    } else {
+      if (credentials.email === null || credentials.password === null) {
+        return Observable.throw("Please insert credentials");
+      } else {
       // At this point store the credentials to your backend!
-      return Observable.create(observer => {
+        return Observable.create(observer => {
         observer.next(true);
         observer.complete();
-      });
+        });
+      }
     }
-  }
  
   public getUserInfo() : User {
     return this.currentUser;
