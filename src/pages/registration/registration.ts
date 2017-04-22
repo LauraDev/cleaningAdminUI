@@ -85,9 +85,6 @@ public constructor(public navCtrl: NavController,
                      alert.present(prompt);
                  }
                },
-               err => {
-                 console.log('error reading Ws')
-               }
              );
            }
          }, 

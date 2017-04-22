@@ -26,10 +26,7 @@ export class ListPage {
           this.allCleaners.push(realcleaner.cleaning)
         }
       },
-      err => {
-        console.log('Error reading to Ws')
-      }
-    );
+    )
   }
   
   goToOtherPage() {
@@ -61,9 +58,6 @@ export class ListPage {
           this.backendWs.dash(JSON.stringify(allCleaner)).then(
             data => {
               this.navCtrl.push(ListPage); 
-              err => {
-                console.log('Error writting to Ws')
-              }
             }
           )
         }

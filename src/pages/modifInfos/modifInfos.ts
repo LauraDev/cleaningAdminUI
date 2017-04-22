@@ -85,9 +85,6 @@ export class ModifInfosPage implements OnInit {
                      alert.present(prompt);
                  }
                },
-               err => {
-                 console.log('error reading Ws')
-               }
              );
            }
          }, 
