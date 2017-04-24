@@ -14,10 +14,7 @@ export class ClassCleaner {
            longitude: string, 
            distance: string,
            status: string, 
-           number: string, 
-           street: string, 
-           postcode: string, 
-           city: string } = {
+           address: string } = {
     uuid: UUID.UUID(),
     firstName: 'Luc',
     lastName: 'T',
@@ -27,9 +24,6 @@ export class ClassCleaner {
     longitude: '',
     distance: '5',
     status: '0',
-    number: '1',
-    street: 'main street',
-    postcode: 'f1',
-    city: 'ottawa',
+    address: '1 main st ottawa',
     };
 }

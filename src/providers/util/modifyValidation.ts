@@ -27,30 +27,12 @@ this.newCleaner = this.formBuilder.group({
            Validators.pattern('[0-9 -]*'), 
            Validators.required])],
 
-  'number': ['', Validators.compose(
-            [Validators.maxLength(10), 
-            Validators.pattern('[a-zA-Z0-9 /-]*'), 
-            Validators.required])],
-
-  'street': ['', Validators.compose(
-            [Validators.maxLength(100), 
-            Validators.pattern('[a-zA-Z ,-/]*'), 
-            Validators.required])],
-
-  'postcode': ['', Validators.compose(
-              [Validators.maxLength(7), 
-              Validators.pattern('[a-zA-Z0-9 ]*'), 
-              Validators.required])],
-
-  'city': ['', Validators.compose(
-          [Validators.maxLength(30), 
-          Validators.pattern('[a-zA-Z -]*'), 
-          Validators.required])],
-
   'email': ['', Validators.compose(
            [Validators.maxLength(50), 
            Validators.required])],
            
+  'address': ['', Validators.required],
+  
   'distance': ['', Validators.compose(
               [Validators.maxLength(30), 
               Validators.pattern('[0-9]*'), 

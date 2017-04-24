@@ -26,7 +26,7 @@ export class BackendWs {
             //console.log('Error 1 reading to Ws')
             let alert = this.alertCtrl.create({
               title: 'ERROR',
-              subTitle: 'Fail to connect to Database',
+              subTitle: 'Failed to connect to Database',
               buttons: ['OK']
             });
             alert.present(prompt);
@@ -51,7 +51,7 @@ export class BackendWs {
             //console.log('Error 1 reading to Ws')
             let alert = this.alertCtrl.create({
               title: 'ERROR',
-              subTitle: 'Fail to connect to Database',
+              subTitle: 'Failed to connect to Database',
               buttons: ['OK']
             });
             alert.present(prompt);
@@ -76,7 +76,7 @@ export class BackendWs {
             //console.log('Error 1 reading to Ws')
             let alert = this.alertCtrl.create({
               title: 'ERROR',
-              subTitle: 'Fail to connect to Database',
+              subTitle: 'Failed to connect to Database',
               buttons: ['OK']
             });
             alert.present(prompt);
@@ -102,7 +102,7 @@ export class BackendWs {
             //console.log('Error 1 reading to Ws')
             let alert = this.alertCtrl.create({
               title: 'ERROR',
-              subTitle: 'Fail to connect to Database',
+              subTitle: 'Failed to connect to Database',
               buttons: ['OK']
             });
             alert.present(prompt);

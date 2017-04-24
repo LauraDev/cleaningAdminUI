@@ -9,22 +9,34 @@
 
 <ion-content padding>
   
-  <ion-grid>
+  <ion-grid class="top">
     <ion-col>
       <h1>{{currentUser}} , Welcome to your DashBoard !</h1>
     </ion-col>
   </ion-grid>
   
-  <div margin-top>
-    <button ion-button icon-left clear (click)="goToOtherPage()">
-       <ion-icon name="contact"></ion-icon>
-       <div>Register a new Cleaner</div>
-    </button> 
-  </div>  
-  <div margin-top>
-    <button ion-button icon-left clear (click)="goToOtherPage2()"> 
-      <ion-icon name="contacts"></ion-icon>
-       <div>List of Registered Cleaner</div>
-    </button>
-  </div>
+  <ion-grid class="middle">
+    <div margin-top>
+      <button ion-button icon-left clear (click)="goToOtherPage()">
+        <ion-icon name="contact"></ion-icon>
+        <div>Register a new Cleaner</div>
+      </button> 
+    </div>  
+    <div margin-top>
+      <button ion-button icon-left clear (click)="goToOtherPage2()"> 
+        <ion-icon name="contacts"></ion-icon>
+        <div>List of Registered Cleaner</div>
+      </button>
+    </div>
+  </ion-grid>
+
+
 </ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col>
+      <img src="assets/img/img-banner.jpg"/>
+    </ion-col>
+  </ion-row>
+</ion-footer>

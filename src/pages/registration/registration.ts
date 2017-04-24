@@ -1,4 +1,4 @@
-import { OnInit, Component } from '@angular/core';
+import { OnInit, Component, NgZone } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { FormGroup } from '@angular/forms';
 
@@ -6,6 +6,8 @@ import { BackendWs } from "../../providers/factory/backend-ws";
 import { DashBoardPage } from '../dashBoard/dashBoard';
 import { ClassCleaner } from "../../providers/dto/classCleaner";
 import { FormValidation } from "../../providers/util/formValidation";
+
+declare var google;
 
 @Component({
   selector: 'page-registration',
@@ -19,22 +21,55 @@ public geocode: any;
 public lat: string;
 public lng: string;
 
+public autocompleteItems;
+public address;
+public service = new google.maps.places.AutocompleteService();
+
 public constructor(public navCtrl: NavController,
                    public alertCtrl: AlertController,
                    public backendWs: BackendWs,
+                   private zone: NgZone,
                    public classCleaner: ClassCleaner,
                    public formValidation: FormValidation)
                      {
-  }
+                       this.autocompleteItems = [];
+                       this.address = {query: ''};
+                     }
   
   ngOnInit(): any {
    this.Cleaners = this.formValidation.newCleaner;
    this.cleaner = this.classCleaner.allInfos;
+   this.address.query = this.classCleaner.allInfos.address;
   } 
 
   isValid(field: string) {
     let formField = this.Cleaners.get(field);
     return formField.valid || formField.pristine;
+  }
+
+  chooseItem(item: any) {
+    this.address.query = item;
+    console.log(this.address);
+    this.classCleaner.allInfos.address = this.address.query;
+    this.autocompleteItems = [];
+  }
+  
+  updateSearch() {
+    if (this.address.query == '') {
+      this.autocompleteItems = [];
+      return;
+    }
+    let list = this;
+    this.service.getPlacePredictions({ input: this.address.query, 
+                                       componentRestrictions: {country: 'CA'} }, 
+                                       function (predictions, status) {
+      list.autocompleteItems = []; 
+      list.zone.run(function () {
+        predictions.forEach(function (prediction) {
+          list.autocompleteItems.push(prediction.description);
+        });
+      });
+    });
   }
   
   onSubmit() {
@@ -54,7 +89,7 @@ public constructor(public navCtrl: NavController,
            handler: () => {
             
              // 1- Send 'address' to WS (ask for geocodes)
-             this.backendWs.goecReq(JSON.stringify(this.classCleaner.allInfos)).then(
+             this.backendWs.goecReq(JSON.stringify(this.address)).then(
                // 2- Get Geocodes
                data => {
                  if (data.length > 0){

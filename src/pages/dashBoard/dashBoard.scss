@@ -1,11 +1,18 @@
 page-dashBoard {
 
-ion-grid{
+.top{
   height: 60px;
 	text-align: center;
   background-color: lavender;
   align-items: center; 
 }
+
+.middle{
+  height: 45%;
+  justify-content: center;
+	text-align: center;
+  align-items: center; 
+} 
 
 p {
 	height: 120px;
@@ -15,5 +22,14 @@ p {
     align-items: center; 
     /* justify-content: center;*/
   }
+
+  img {
+    position:absolute;
+    left: 0;
+    right: 0;
+    margin:0 auto;
+    //top:50%;
+    transform:translateY(-115%);
+}
 
 }

@@ -57,30 +57,16 @@
       <ion-card-header><p>
         Address:
       </p></ion-card-header>
-      <ion-item>
-        <ion-label>Street Number</ion-label>
-        <ion-input [(ngModel)]="cleaner.number" type="text" formControlName="number" id="number" spellcheck="false" autocapitalize="off"></ion-input>
-      </ion-item>
-      <p *ngIf="!isValid('number')" class=
-      "alert alert-danger" padding-left>The Street Number can only contain Letters A-Z, Digits 0-9 and '-/</p>
-
-      <ion-item>
-        <ion-label>Street</ion-label>
-        <ion-input [(ngModel)]="cleaner.street" type="text" formControlName="street" id="street" spellcheck="false" autocapitalize="off"></ion-input>
-      </ion-item>
-      <p *ngIf="!isValid('street')" danger padding-left>The Street Name can only contain Letters A-Z</p>
-
-      <ion-item>
-        <ion-label>Postcode</ion-label>
-        <ion-input [(ngModel)]="cleaner.postcode" type="text" formControlName="postcode" id="postcode" spellcheck="false" autocapitalize="off"></ion-input>
-      </ion-item>
-      <p *ngIf="!isValid('postcode')" danger padding-left>The Postcode can only contain Letters A-Z, Digits 0-9 and -/</p>
-
-      <ion-item>
-        <ion-label>City</ion-label>
-        <ion-input [(ngModel)]="cleaner.city" type="text" formControlName="city" id="city" spellcheck="false" autocapitalize="off"></ion-input>
-      </ion-item>
-      <p *ngIf="!isValid('city')" danger padding-left>The City can only contain Letters A-Z and '</p>
+       
+       
+       <ion-searchbar class="searchbar" formControlName="address"
+        [(ngModel)]="address.query" (ionInput)="updateSearch()">
+       </ion-searchbar>
+       <ion-list>
+         <ion-item *ngFor="let item of autocompleteItems" tappable (click)="chooseItem(item)">
+           {{ item }}
+         </ion-item>
+       </ion-list>
       
       <ion-card-header><p>
         How far away from its address is the Cleaner willing to travel? (in Km)

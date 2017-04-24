@@ -13,10 +13,7 @@ export class ClassModify {
            longitude: string, 
            distance: string,
            status: string, 
-           number: string, 
-           street: string, 
-           postcode: string, 
-           city: string } = {
+           address: string } = {
     uuid: '',
     firstName: '',
     lastName: '',
@@ -26,9 +23,6 @@ export class ClassModify {
     longitude: '',
     distance: '',
     status: '',
-    number: '',
-    street: '',
-    postcode: '',
-    city: '',
+    address: '',
    };
 }
