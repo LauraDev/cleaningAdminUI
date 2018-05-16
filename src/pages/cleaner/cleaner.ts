@@ -12,29 +12,15 @@ import {UUID} from 'angular2-uuid';
 export class CleanerPage implements OnInit {
 
   public newCleaner: FormGroup;
-  // userInfo: {firstName: string, lastName: string, phone: string, number: string, street: string, postcode: string, city: string, uuid: string, status: number, latitude: string, longitude: string, distance: number } = {
-  //   firstName: '',
-  //   lastName: '',
-  //   phone: '',
-  //   number: '',
-  //   street: '',
-  //   postcode: '',
-  //   city: '',
-  //   uuid: '',
-  //   status: 0,
-  //   latitude: '',
-  //   longitude: '',
-  //   distance: 5
-  // };
   userInfo: {firstName: string, lastName: string, phone: string, number: string, street: string, postcode: string, city: string, uuid: string, status: number, latitude: string, longitude: string, distance: number } = {
-    firstName: 'Lucas',
-    lastName: 'Traore',
-    phone: '6132408882',
-    number: '213',
-    street: 'Laso',
-    postcode: 'weq',
-    city: 'ewq',
-    uuid: UUID.UUID(),
+    firstName: '',
+    lastName: '',
+    phone: '',
+    number: '',
+    street: '',
+    postcode: '',
+    city: '',
+    uuid: '',
     status: 0,
     latitude: '',
     longitude: '',
